@@ -1,4 +1,16 @@
 
+@font-face {
+  font-family: 'MPLUSRounded';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('@/assets/fonts/MPLUSRounded1c-Regular.ttf') format('truetype');
+}
+
+* {
+  font-family: "MPLUSRounded", "sans-serif" !important;
+}
+
 body {
   // background-color: #6cffa2;
   background-size: cover;

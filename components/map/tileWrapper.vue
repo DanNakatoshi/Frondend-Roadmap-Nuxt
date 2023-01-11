@@ -9,7 +9,7 @@
   >
     <div class="tile-container" ref="map">
       <div>
-        <MapTile class="tile-1 hovered-tile" @click.prevent="openDialog(1)">
+        <MapTile class="tile-1" :menu="menu1">
           <img
             src="@/assets/icon/1-person.svg"
             alt="html"
@@ -230,4 +230,18 @@ const dialogCard = ref(null);
 function openDialog(id) {
   dialogCard.value.isDialog = true;
 }
+
+const menu1 = ref({
+  title: "はじめに",
+  item: [
+    {
+      title: "動機の確認",
+      isDone: false,
+    },
+    {
+      title: "目標を設定",
+      isDone: false,
+    },
+  ],
+});
 </script>

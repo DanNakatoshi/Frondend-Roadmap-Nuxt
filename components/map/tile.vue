@@ -6,12 +6,12 @@
       <slot></slot>
     </div>
     <div class="side bottom"></div>
-    <TooltipMenu/>
+    <TooltipMenu :menu="menu"/>
   </div>
 </template>
 
 <script setup>
-const prop = defineProps(["tileTop"]);
+const prop = defineProps(["tileTop", "menu"]);
 
 
 </script>

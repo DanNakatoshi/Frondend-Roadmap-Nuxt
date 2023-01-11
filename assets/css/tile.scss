@@ -4,6 +4,7 @@
   transform-style: preserve-3d;
   transform: rotateX(-60deg) rotateY(-30deg);
   transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+
   &:hover {
     margin-top: -1rem;
     transform: rotateX(-50deg) rotateY(-20deg);
@@ -14,15 +15,12 @@
         70.5px 120.8px 51.4px -10px rgba(0, 0, 0, 0.353), 70px 120px 98px -10px rgba(0, 0, 0, 0.63);
     }
     .tooltip-wrapper {
-      .tooltip-postion {
-        transition: all 0.5s;
+      .tooltip-position {
         opacity: 1;
       }
     }
   }
 }
-
-
 
 .side {
   position: absolute;
@@ -54,7 +52,7 @@
 }
 
 // Tile Location
-$offset-top: 200px;
+$offset-top: 400px;
 $offset-left: -100px;
 $tile-top: 70px;
 $tile-left: 140px;
