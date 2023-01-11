@@ -1,23 +1,19 @@
-// Cube 3D
-// $box-side: rgba(255, 0, 0, 1)
-
-// .cube-container {
-//   display: inline-block;
-//   margin: 1rem;
-// }
-
 .cube {
   font-size: 4em;
-  width: 3em;
+  // width: 3em;
   margin: 1.5em auto;
   transform-style: preserve-3d;
   transform: rotateX(-60deg) rotateY(-30deg);
-  transition: all transform;
-  transition-duration: 0.5s;
-  transition-timing-function: ease-in-out;
-
+  transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) ;
   &:hover {
     margin-top: -1rem;
+    transform: rotateX(-50deg) rotateY(-20deg);
+    .bottom {
+      transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) ;
+      box-shadow: 62px 106.3px 11.8px -10px rgba(0, 0, 0, 0.088), 68.6px 117.7px 22.2px -10px rgba(0, 0, 0, 0.166),
+        70.4px 120.7px 31.3px -10px rgba(0, 0, 0, 0.233), 70.7px 121.2px 39.8px -10px rgba(0, 0, 0, 0.291),
+        70.5px 120.8px 51.4px -10px rgba(0, 0, 0, 0.353), 70px 120px 98px -10px rgba(0, 0, 0, 0.63);
+    }
   }
 }
 
@@ -25,28 +21,41 @@
   position: absolute;
   width: 2em;
   height: 2em;
-  // border: 0px;
   text-align: center;
   line-height: 2em;
 }
 
 .top {
-  background: #2e6299;
+  background: #1cce60;
   transform: rotateX(90deg) translateZ(1em);
 }
 .front {
-  // background: #143c66;
-  background-image: linear-gradient(to top, rgba(150, 102, 102, 0), rgba(255, 0, 0, 1));
+  background: linear-gradient(180deg, #00a800 30%, #c84c0c 10%);
   transform: translateZ(1em);
 }
 .right {
-  // background: #143c66;
-  background-image: linear-gradient(to top, rgba(150, 102, 102, 0), rgba(255, 0, 0, 1));
-
+  background: linear-gradient(180deg, #009700 30%, #ac3f09 10%);
   transform: rotateY(90deg) translateZ(1em);
 }
 
+.bottom {
+  // background: black;
+  transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) ;
+  transform: rotateX(90deg) translateZ(-1em);
+    box-shadow:
+    0.7px 0.7px 3.5px -2px rgba(0, 0, 0, 0.051),
+    1.6px 1.6px 7.7px -2px rgba(0, 0, 0, 0.095),
+    2.9px 3px 13.2px -2px rgba(0, 0, 0, 0.133),
+    5.2px 5.3px 21.6px -2px rgba(0, 0, 0, 0.166),
+    9.9px 10.1px 37.6px -2px rgba(0, 0, 0, 0.201),
+    44px 45px 111px -2px rgba(0, 0, 0, 0.36)
+  ;
+ 
+}
+
 // Tile Location
+$offset-top: 200px;
+$offset-left: -100px;
 $tile-top: 70px;
 $tile-left: 140px;
 $third-row: 610px;
@@ -56,177 +65,174 @@ $fifth-col: -180px;
 $seventh-row: 780px;
 $seventh-col: -480px;
 
+.img-1 {
+  height: 80%;
+}
+
 .tile-1 {
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: $offset-top;
+  left: $offset-left;
   z-index: 1;
 }
 
 .tile-2 {
   position: absolute;
-  top: calc($tile-top);
-  left: calc($tile-left);
+  top: calc($offset-top + $tile-top);
+  left: calc($offset-left + $tile-left);
   z-index: 2;
 }
 
 .tile-3 {
   position: absolute;
-  top: calc($tile-top * 2);
-  left: calc($tile-left * 2);
+  top: calc($offset-top + $tile-top * 2);
+  left: calc($offset-left + $tile-left * 2);
   z-index: 3;
 }
 
 .tile-4 {
   position: absolute;
-  top: calc($tile-top * 3);
-  left: calc($tile-left * 3);
+  top: calc($offset-top + $tile-top * 3);
+  left: calc($offset-left + $tile-left * 3);
   z-index: 4;
 }
 
 .tile-5 {
   position: absolute;
-  top: calc($tile-top * 4);
-  left: calc($tile-left * 4);
+  top: calc($offset-top + $tile-top * 4);
+  left: calc($offset-left + $tile-left * 4);
   z-index: 5;
 }
 .tile-6 {
   position: absolute;
-  top: calc($tile-top * 5);
-  left: calc($tile-left * 5);
+  top: calc($offset-top + $tile-top * 5);
+  left: calc($offset-left + $tile-left * 5);
   z-index: 6;
 }
 .tile-7 {
   position: absolute;
-  top: 480px;
-  left: 620px;
+  top: calc($offset-top + 480px);
+  left: calc($offset-left + 620px);
   z-index: 7;
 }
 .tile-8 {
   position: absolute;
-  top: calc($third-row);
-  left: calc($third-col);
+  top: calc($offset-top + $third-row);
+  left: calc($offset-left + $third-col);
   z-index: 8;
 }
 .tile-9 {
   position: absolute;
-  top: calc($third-row - $tile-top);
-  left: calc($third-col - $tile-left);
+  top: calc($offset-top + $third-row - $tile-top);
+  left: calc($offset-left + $third-col - $tile-left);
   z-index: 7;
 }
 .tile-10 {
   position: absolute;
-  top: calc($third-row - $tile-top * 2);
-  left: calc($third-col - $tile-left * 2);
+  top: calc($offset-top + $third-row - $tile-top * 2);
+  left: calc($offset-left + $third-col - $tile-left * 2);
   z-index: 6;
 }
 .tile-11 {
   position: absolute;
-  top: calc($third-row - $tile-top * 3);
-  left: calc($third-col - $tile-left * 3);
+  top: calc($offset-top + $third-row - $tile-top * 3);
+  left: calc($offset-left + $third-col - $tile-left * 3);
   z-index: 5;
 }
 .tile-12 {
   position: absolute;
-  top: calc($third-row - $tile-top * 4);
-  left: calc($third-col - $tile-left * 4);
+  top: calc($offset-top + $third-row - $tile-top * 4);
+  left: calc($offset-left + $third-col - $tile-left * 4);
   z-index: 4;
 }
 .tile-13 {
   position: absolute;
-  top: 460px;
-  left: -100px;
+  top: calc($offset-top + 460px);
+  left: calc($offset-left + -100px);
   z-index: 8;
 }
 .tile-14 {
   position: absolute;
-  top: $fifth-row;
-  left: $fifth-col;
+  top: calc($offset-top + $fifth-row);
+  left: calc($offset-left + $fifth-col);
   z-index: 9;
 }
 .tile-15 {
   position: absolute;
-  top: calc($fifth-row - $tile-top);
-  left: calc($fifth-col - $tile-left);
+  top: calc($offset-top + $fifth-row - $tile-top);
+  left: calc($offset-left + $fifth-col - $tile-left);
   z-index: 8;
 }
 .tile-16 {
   position: absolute;
-  top: 650px;
-  left: -400px;
+  top: calc($offset-top + 650px);
+  left: calc($offset-left + -400px);
   z-index: 9;
 }
 .tile-17 {
   position: absolute;
-  top: $seventh-row;
-  left: $seventh-col;
+  top: calc($offset-top + $seventh-row);
+  left: calc($offset-left + $seventh-col);
   z-index: 10;
 }
 .tile-18 {
   position: absolute;
-  top: calc($seventh-row + $tile-top);
-  left: calc($seventh-col + $tile-left);
+  top: calc($offset-top + $seventh-row + $tile-top);
+  left: calc($offset-left + $seventh-col + $tile-left);
   z-index: 11;
 }
 .tile-19 {
   position: absolute;
-  top: calc($seventh-row + $tile-top * 2);
-  left: calc($seventh-col + $tile-left * 2);
+  top: calc($offset-top + $seventh-row + $tile-top * 2);
+  left: calc($offset-left + $seventh-col + $tile-left * 2);
   z-index: 12;
 }
 .tile-20 {
   position: absolute;
-  top: calc($seventh-row + $tile-top * 3);
-  left: calc($seventh-col + $tile-left * 3);
-  z-index: 4;
+  top: calc($offset-top + $seventh-row + $tile-top * 3);
+  left: calc($offset-left + $seventh-col + $tile-left * 3);
+  z-index: 13;
 }
 .tile-21 {
   position: absolute;
-  top: calc($seventh-row + $tile-top * 4);
-  left: calc($seventh-col + $tile-left * 4);
-  z-index: 5;
+  top: calc($offset-top + $seventh-row + $tile-top * 4);
+  left: calc($offset-left + $seventh-col + $tile-left * 4);
+  z-index: 14;
 }
 .tile-22 {
   position: absolute;
-  top: 930px;
-  left: 160px;
-  z-index: 4;
+  top: calc($offset-top + 930px);
+  left: calc($offset-left + 160px);
+  z-index: 13;
 }
 .tile-23 {
   position: absolute;
-  top: 1000px;
-  left: 300px;
-  z-index: 4;
+  top: calc($offset-top + 1000px);
+  left: calc($offset-left + 300px);
+  z-index: 14;
 }
 .tile-24 {
   position: absolute;
-  top: 1070px;
-  left: 440px;
-  z-index: 4;
+  top: calc($offset-top + 1070px);
+  left: calc($offset-left + 440px);
+  z-index: 15;
 }
 .tile-25 {
   position: absolute;
-  top: 1200px;
-  left: 360px;
-  z-index: 4;
+  top: calc($offset-top + 1200px);
+  left: calc($offset-left + 360px);
+  z-index: 16;
 }
 
 // Tile
 
-.map-center{
-  display: flex;
-  width: 80vw;
+.map-center {
   height: 100vh;
   justify-content: center;
+  align-items: center;
 }
 .tile-container {
-
   position: relative;
-  margin-left: 500px;
-  justify-content: center;
-  // perspective: 800px;
-  // transform: perspective(800px) rotateX(30deg);
-  // transform: rotateX(90deg) translateZ(1em);
 }
 
 .tile {
@@ -234,7 +240,6 @@ $seventh-col: -480px;
   height: 5rem;
   margin: 0.1rem;
   padding: 0.5rem;
-  // border-radius: 0.5rem;
 }
 
 .active-tile {
@@ -260,5 +265,5 @@ $seventh-col: -480px;
   right: 0;
 }
 .icon-active {
-  filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(119%);
+  filter: invert(12%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(119%);
 }
