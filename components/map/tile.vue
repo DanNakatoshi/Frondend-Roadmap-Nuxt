@@ -5,11 +5,11 @@
     <div class="side top" :class="tileTop">
       <slot></slot>
     </div>
+    <div class="side bottom"></div>
+    <!-- <TooltipMenu/> -->
   </div>
 </template>
 
 <script setup>
-// import { defineProps } from "vue";
-
 const prop = defineProps(["tileTop"]);
 </script>
