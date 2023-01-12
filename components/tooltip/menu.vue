@@ -5,14 +5,22 @@
         {{ prop.menu.title }}
       </div>
 
-      <div v-for="item, index in prop.menu.item" key="index">
-        <div class="menu-item">
+      <div v-for="(item, index) in prop.menu.item" key="index">
+        <div class="menu-item" @click.prevent="clickCheck(menu, index)">
           <div class="menu-title">
             {{ item.title }}
           </div>
           <span>
-            <img v-if="!item.isDone" src="@/assets/icon/square.svg" class="check-icon" @click.prevent="clickCheck(index)"/>
-            <img v-if="item.isDone" src="@/assets/icon/square-check.svg" class="check-icon" />
+            <img
+              v-if="!item.isDone"
+              src="@/assets/icon/square.svg"
+              class="check-icon"
+            />
+            <img
+              v-if="item.isDone"
+              src="@/assets/icon/square-check.svg"
+              class="check-icon"
+            />
           </span>
         </div>
       </div>
@@ -21,11 +29,21 @@
 </template>
 
 <script setup>
-const prop = defineProps(["menu"]);
-
-function clickCheck(index) {
-  console.log(index)
+function allChecked(menu) {
+  return menu.item.every((obj) => {
+    return Boolean(obj.isDone) === true;
+  });
 }
+
+function clickCheck(menu, id) {
+  menu.item[id].isDone = !menu.item[id].isDone;
+
+  menu.item.every((obj) => {
+    return obj.isDone === true;
+  });
+  allChecked(menu) ? (menu.isAllDone = true) : (menu.isAllDone = false);
+}
+const prop = defineProps(["menu"]);
 </script>
 
 <style lang="scss">
@@ -37,6 +55,7 @@ function clickCheck(index) {
     flex-direction: column;
     transition: all 0.5s ease 0.4s;
     opacity: 0;
+    visibility: hidden;
     position: absolute;
     bottom: 150px;
     left: 20px;
@@ -48,10 +67,10 @@ function clickCheck(index) {
 }
 
 .menu-item {
-  display: flex;
   align-items: center;
-  width: 100%;
+  display: flex;
   height: auto;
+  width: max-content;
   padding: 12px 15px;
   margin: 20px 0 0 0;
   background: rgba(74, 144, 226, 0.7);
@@ -63,7 +82,6 @@ function clickCheck(index) {
     background-color: rgb(74, 144, 226);
     transform: scale(1.1);
   }
-  /* animation: vibrate-1 3s linear infinite both; */
 }
 
 .check-icon {
@@ -74,28 +92,6 @@ function clickCheck(index) {
   opacity: 0.5;
   &:hover {
     opacity: 1;
-  }
-}
-
-@keyframes vibrate-1 {
-  0% {
-    transform: translate(0);
-  }
-  20% {
-    transform: translate(-3px, 3px);
-  }
-  40% {
-    transform: translate(-3px, -3px);
-  }
-  60% {
-    transform: translate(3px, 3px);
-  }
-  80% {
-    transform: translate(3px, -3px);
-  }
-  100% {
-    -webkit-transform: translate(0);
-    transform: translate(0);
   }
 }
 </style>

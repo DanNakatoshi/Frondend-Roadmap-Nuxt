@@ -75,7 +75,6 @@ defineExpose({
       z-index: 100;
       background: rgba(74, 144, 226, 0.5);
       backdrop-filter: blur(10.5px);
-      -webkit-backdrop-filter: blur(10.5px);
       border: 1px solid rgba(255, 255, 255, 0.18);
     }
   }

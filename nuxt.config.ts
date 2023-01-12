@@ -4,7 +4,6 @@ export default defineNuxtConfig({
     "@/assets/css/main.scss",
     "@/assets/css/tile.scss",
     "@/assets/css/dialog.scss",
-
   ],
-  // plugins: ["~/plugins/main.js"],
+  modules: ["@pinia/nuxt"],
 });
