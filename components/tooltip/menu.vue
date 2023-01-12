@@ -7,7 +7,7 @@
 
       <div v-for="(item, index) in prop.menu.item" key="index">
         <div class="menu-item" @click.prevent="clickCheck(menu, index)">
-          <div class="menu-title">
+          <div class="item-title">
             {{ item.title }}
           </div>
           <span>
@@ -48,7 +48,7 @@ const prop = defineProps(["menu"]);
 
 <style lang="scss">
 .tooltip-wrapper {
-  transform: rotateX(0deg) rotateY(0deg); 
+  transform: rotateX(0deg) rotateY(0deg);
 
   position: relative;
   z-index: 101;
@@ -65,6 +65,15 @@ const prop = defineProps(["menu"]);
 }
 
 .menu-title {
+  width: max-content;
+  font-size: 40px;
+  padding: 20px 30px 45px 30px;
+  background: #eeb6b6;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 26% 75%, 17% 100%, 21% 75%, 0% 75%);
+
+}
+
+.item-title {
   font-size: 30px;
   padding: 20px;
 }
@@ -74,18 +83,14 @@ const prop = defineProps(["menu"]);
   display: flex;
   height: auto;
   width: max-content;
-  padding: 10px 12px;
+  padding: 10px 30px;
   margin: 20px 0 0 0;
   font-size: 20px;
   background: rgba(74, 144, 226, 0.7);
   backdrop-filter: blur(5px);
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 1px 1px 2.2px rgba(0, 0, 0, 0.014),
-    2.4px 2.3px 5.3px rgba(0, 0, 0, 0.02), 4.5px 4.4px 10px rgba(0, 0, 0, 0.025),
-    8px 7.8px 17.9px rgba(0, 0, 0, 0.03),
-    15px 14.6px 33.4px rgba(0, 0, 0, 0.036), 36px 35px 80px rgba(0, 0, 0, 0.05);
   &:hover {
     background-color: rgb(74, 144, 226);
     transform: scale(1.1);
