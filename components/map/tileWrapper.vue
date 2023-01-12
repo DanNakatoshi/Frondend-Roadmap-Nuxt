@@ -1,11 +1,11 @@
 <template>
-  <DialogCard ref="dialogCard" />
   <div
     v-show="isMounted"
     class="map-center"
-    @mousedown.prevent="mouseDown"
-    @mouseup.prevent="mouseUp"
-    @mousemove.prevent="mouseMove"
+    @wheel="zoomInOut"
+    @mousedown="mouseDown"
+    @mouseup="mouseUp"
+    @mousemove="mouseMove"
   >
     <div class="tile-container" ref="map">
       <div>
@@ -278,9 +278,13 @@ function mouseMove(event) {
   }
 }
 
-// Dialog
-const dialogCard = ref(null);
-function openDialog(id) {
-  dialogCard.value.isDialog = true;
+let zoom = 1;
+const ZOOM_SPEED = 0.1;
+function zoomInOut(event) {
+  if (event.deltaY > 0) {
+    map.value.style.transform = `scale(${(zoom -= ZOOM_SPEED)})`;
+  } else {
+    map.value.style.transform = `scale(${(zoom += ZOOM_SPEED)})`;
+  }
 }
 </script>

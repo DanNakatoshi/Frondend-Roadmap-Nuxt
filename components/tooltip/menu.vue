@@ -48,6 +48,8 @@ const prop = defineProps(["menu"]);
 
 <style lang="scss">
 .tooltip-wrapper {
+  transform: rotateX(0deg) rotateY(0deg); 
+
   position: relative;
   z-index: 101;
   .tooltip-position {
@@ -57,13 +59,14 @@ const prop = defineProps(["menu"]);
     opacity: 0;
     visibility: hidden;
     position: absolute;
-    bottom: 150px;
+    bottom: 100px;
     left: 20px;
   }
 }
 
 .menu-title {
-  font-family: inherit;
+  font-size: 30px;
+  padding: 20px;
 }
 
 .menu-item {
@@ -71,13 +74,18 @@ const prop = defineProps(["menu"]);
   display: flex;
   height: auto;
   width: max-content;
-  padding: 12px 15px;
+  padding: 10px 12px;
   margin: 20px 0 0 0;
+  font-size: 20px;
   background: rgba(74, 144, 226, 0.7);
   backdrop-filter: blur(5px);
   border-radius: 10px;
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 1px 1px 2.2px rgba(0, 0, 0, 0.014),
+    2.4px 2.3px 5.3px rgba(0, 0, 0, 0.02), 4.5px 4.4px 10px rgba(0, 0, 0, 0.025),
+    8px 7.8px 17.9px rgba(0, 0, 0, 0.03),
+    15px 14.6px 33.4px rgba(0, 0, 0, 0.036), 36px 35px 80px rgba(0, 0, 0, 0.05);
   &:hover {
     background-color: rgb(74, 144, 226);
     transform: scale(1.1);

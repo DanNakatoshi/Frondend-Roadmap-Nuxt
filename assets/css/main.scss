@@ -1,19 +1,28 @@
-
 @font-face {
-  font-family: 'MPLUSRounded';
+  font-family: "NotoSansJP";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('@/assets/fonts/MPLUSRounded1c-Regular.ttf') format('truetype');
+  src: url("@/assets/fonts/NotoSansJP-Regular.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "NotoSansJP";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("@/assets/fonts/NotoSansJP-Bold.otf") format("truetype");
 }
 
 * {
-  font-family: "MPLUSRounded", "sans-serif" !important;
+  font-family: "NotoSansJP-Regular", "sans-serif" !important;
+  font-weight: 400;
 }
 
 body {
-  // background-color: #6cffa2;
   background-size: cover;
   background-repeat: no-repeat;
-  // height: 100vh;
+  height: 100vh;
+  overflow: hidden; /* Hide scrollbars */
+
 }
